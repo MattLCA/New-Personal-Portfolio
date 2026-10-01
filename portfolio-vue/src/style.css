@@ -1,0 +1,48 @@
+:root {
+  --bg: #fafbfb;
+  --surface: #f0f4f4;
+  --line: #dde5e5;
+  --text: #17212b;
+  --muted: #52616b;
+  --accent: #0e7c6b;
+  --accent-hover: #0a5f52;
+  --on-accent: #ffffff;
+  --error: #c2371a;
+  --sans: 'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --max: 1100px;
+  --pad: clamp(1.25rem, 4vw, 2.5rem);
+  color-scheme: light dark;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f1719;
+    --surface: #172326;
+    --line: #26373a;
+    --text: #e8f0f0;
+    --muted: #9db0b3;
+    --accent: #4cc9b0;
+    --accent-hover: #7fe0cb;
+    --on-accent: #0f1719;
+    --error: #ff8d75;
+  }
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 4.5rem; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+body { background: var(--bg); color: var(--text); font: 400 1.0625rem/1.65 var(--sans); overflow-x: hidden;
+  -webkit-font-smoothing: antialiased; }
+img { max-width: 100%; display: block; }
+a { color: inherit; }
+
+.wrap { max-width: var(--max); margin: 0 auto; padding-inline: var(--pad); }
+
+/* Sections alternate between the page color and a slightly tinted band */
+.section { padding-block: clamp(4rem, 9vw, 7rem); }
+.section.alt { background: var(--surface); }
+.head { margin-bottom: clamp(2rem, 5vw, 3.5rem); }
+.head h2 { font: 600 clamp(2rem, 4.4vw, 3.1rem)/1.1 var(--sans); letter-spacing: -.035em; }
+.head p { color: var(--muted); font-size: 1.15rem; max-width: 50ch; margin-top: .75rem; }
+
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+.skip { position: absolute; left: -999px; top: 0; background: var(--accent); color: var(--on-accent); padding: .6rem 1rem; z-index: 30; }
+.skip:focus { left: 1rem; top: 1rem; }
