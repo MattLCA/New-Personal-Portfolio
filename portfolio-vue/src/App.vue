@@ -1,8 +1,9 @@
 <script setup>
 import NavBar from './components/NavBar.vue'
 import HeroSection from './components/HeroSection.vue'
-import AboutSection from './components/AboutSection.vue'
-import ProjectsSection from './components/ProjectsSection.vue'
+import ServicesSection from './components/ServicesSection.vue'
+import WorksSection from './components/WorksSection.vue'
+import ResumeSection from './components/ResumeSection.vue'
 import SkillsSection from './components/SkillsSection.vue'
 import ContactSection from './components/ContactSection.vue'
 import SiteFooter from './components/SiteFooter.vue'
@@ -13,8 +14,9 @@ import SiteFooter from './components/SiteFooter.vue'
   <NavBar />
   <main id="main">
     <HeroSection />
-    <AboutSection />
-    <ProjectsSection />
+    <ServicesSection />
+    <WorksSection />
+    <ResumeSection />
     <SkillsSection />
     <ContactSection />
   </main>
