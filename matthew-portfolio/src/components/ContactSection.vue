@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue'
-import { Mail, Phone, Linkedin, Github } from 'lucide-vue-next'
+import { Mail, Phone, MapPin, Linkedin, Github } from 'lucide-vue-next'
 import { profile, pretty } from '../data/profile'
 
 const name = ref(''), email = ref(''), message = ref('')
@@ -18,17 +18,17 @@ function send() {
 <template>
   <footer id="contact" class="ct">
     <div class="w2">
-      <div v-reveal>
-        <h2>Let’s<br /><i>connect.</i></h2>
+      <div class="ctl" v-reveal>
+        <h2>Let’s <i>connect.</i></h2>
         <p class="ctp">I’m open to conversations about developer roles, internships and teams doing meaningful work.</p>
-        <form @submit.prevent="send">
+      </div>
+      <form v-reveal @submit.prevent="send">
           <input v-model.trim="name" type="text" placeholder="Your Name" required autocomplete="name" aria-label="Your name" />
           <input v-model.trim="email" type="email" placeholder="Your Email" required autocomplete="email" aria-label="Your email" />
           <textarea v-model.trim="message" placeholder="Your Message" rows="6" required aria-label="Your message"></textarea>
           <button type="submit" class="send">Send Message</button>
           <p v-if="sent" class="ok" role="status">Opening your email app… if nothing happens, write to {{ profile.email }}.</p>
-        </form>
-      </div>
+      </form>
       <aside v-reveal="{ delay: 100 }">
         <div class="card2">
           <p class="eb">Find me here</p>
@@ -36,8 +36,9 @@ function send() {
           <ul>
             <li><Mail :size="18" /><a :href="`mailto:${profile.email}`">{{ profile.email }}</a></li>
             <li><Phone :size="18" /><a :href="`tel:${profile.phone.replace(/\s/g, '')}`">{{ profile.phone }}</a></li>
-            <li v-if="profile.linkedin"><Linkedin :size="18" /><span class="lab">LinkedIn:</span><a :href="profile.linkedin" target="_blank" rel="noopener">{{ pretty(profile.linkedin) }}</a></li>
-            <li><Github :size="18" /><span class="lab">GitHub:</span><a :href="profile.github" target="_blank" rel="noopener">{{ pretty(profile.github) }}</a></li>
+            <li><MapPin :size="18" /><span>{{ profile.location }}</span></li>
+            <li v-if="profile.linkedin"><Linkedin :size="18" /><a :href="profile.linkedin" target="_blank" rel="noopener">{{ pretty(profile.linkedin) }}</a></li>
+            <li><Github :size="18" /><a :href="profile.github" target="_blank" rel="noopener">{{ pretty(profile.github) }}</a></li>
           </ul>
         </div>
       </aside>

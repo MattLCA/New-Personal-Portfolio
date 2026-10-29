@@ -1,15 +1,16 @@
 <script setup>
+import { Download, ExternalLink } from 'lucide-vue-next'
 import photo from '../assets/me.jpg'
+import { profile } from '../data/profile'
 
-const facts = [
-  { k: 'Currently', v: 'Developer Intern, LC Studio' },
-  { k: 'Studying', v: 'Software Development, Life Choices Academy' },
-  { k: 'Focus', v: 'Vue · Node.js · MySQL' },
-  { k: 'Languages', v: 'English · Afrikaans' },
-  { k: 'Based in', v: 'Cape Town, South Africa' }
+// Certifications & education — edit freely
+const certs = [
+  'Full-Stack Web Development | Life Choices Academy (2026)',
+  'Introduction to Cybersecurity | Cisco',
+  'Introduction to Data Science | Cisco',
+  'Certificate of Excellence, Top Achiever | Life Choices Academy',
+  'National Senior Certificate (Matric) | Westridge High School (2022)'
 ]
-const softSkills = ['Active listening', 'Collaboration', 'Conflict resolution', 'Critical thinking', 'Management', 'Patience']
-const interests = ['Competitive gaming', 'Football', 'Hiking', 'Movies']
 </script>
 
 <template>
@@ -20,17 +21,35 @@ const interests = ['Competitive gaming', 'Football', 'Hiking', 'Movies']
     </div>
     <div class="ab2">
       <figure class="me" v-reveal>
-        <div class="frame"><img :src="photo" alt="Matthew looking out over the sea" loading="lazy" /></div>
+        <div class="frame"><img :src="photo" alt="Matthew smiling" loading="lazy" /></div>
+        <figcaption>Based in {{ profile.location }}</figcaption>
       </figure>
+
       <div class="abt" v-reveal="{ delay: 80 }">
-        <p>I’m a developer currently interning at LC Studio, a youth talent incubator, where I work on real-world projects, sharpen my team workflows and learn to deliver high-quality code.</p>
-        <p>I’m also a software development student at Life Choices Academy, where I’ve built full-stack apps in Agile/Scrum teams. I take instruction well, work just as well on my own, and like working out exactly what a task needs before delivering something the team can rely on. I’m eager to keep growing and turn my training into job-ready skills.</p>
-        <p>Away from the screen I love competitive games, the football pitch, hikes and a good film. A tough match or a tricky bug, I enjoy the challenge and working well with a team.</p>
-        <dl><div v-for="f in facts" :key="f.k"><dt>{{ f.k }}</dt><dd>{{ f.v }}</dd></div></dl>
-        <p class="chl">How I work</p>
-        <ul class="ch"><li v-for="i in softSkills" :key="i">{{ i }}</li></ul>
-        <p class="chl">Off the clock</p>
-        <ul class="ch"><li v-for="i in interests" :key="i">{{ i }}</li></ul>
+        <p class="lead">I’m a developer intern at LC Studio and a software development student at Life Choices Academy. I enjoy turning ideas into practical full-stack web apps, in a team or on my own.</p>
+
+        <div class="sep two">
+          <div>
+            <h3>My journey</h3>
+            <p>I started in retail at Woolworths, then moved into full-stack development at Life Choices Academy, building real projects in Agile/Scrum teams.</p>
+          </div>
+          <div>
+            <h3>Off the clock</h3>
+            <p>Competitive games, the football pitch, hikes and a good film.</p>
+          </div>
+        </div>
+
+        <div class="sep">
+          <h3>Certifications &amp; education</h3>
+          <ol class="certs">
+            <li v-for="(c, i) in certs" :key="c"><span>0{{ i + 1 }}</span>{{ c }}</li>
+          </ol>
+        </div>
+
+        <div class="cvb">
+          <a class="btn s" :href="profile.cv" download><Download :size="15" /> Download CV</a>
+          <a class="btn" :href="profile.cv" target="_blank" rel="noopener"><ExternalLink :size="15" /> View CV</a>
+        </div>
       </div>
     </div>
   </section>
