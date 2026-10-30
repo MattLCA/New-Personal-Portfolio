@@ -1,5 +1,5 @@
 @tailwind utilities;
-:root{--paper:#F8F9FA;--ink:#1E1E24;--line:rgba(30,30,36,.12);--mute:rgba(30,30,36,.68);--card:rgba(255,255,255,.65);--crimson:#E60026;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+:root{--paper:#FFFFFF;--ink:#1E1E24;--line:rgba(30,30,36,.12);--mute:rgba(30,30,36,.68);--card:rgba(255,255,255,.65);--crimson:#E60026;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
 :root[data-theme="dark"]{--paper:#141418;--ink:#EEEEF2;--line:rgba(238,238,242,.14);--mute:rgba(238,238,242,.68);--card:rgba(255,255,255,.04);--crimson:#FF3352;color-scheme:dark}
 *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:90px}
 body{margin:0;overflow-x:clip;background:var(--paper);color:var(--ink);font:400 16px/1.5 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
@@ -173,9 +173,6 @@ background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000
 /* ---- about with photo ---- */
 .ab2{display:grid;grid-template-columns:minmax(240px,360px) 1fr;gap:56px;margin-top:40px;align-items:start}
 .me{margin:0;position:relative;isolation:isolate}
-.me:before{content:"";position:absolute;inset:0;transform:translate(14px,14px);border:1.5px solid var(--crimson);border-radius:14px;z-index:-1;transition:transform .5s cubic-bezier(.22,1,.36,1)}
-.me:hover:before{transform:translate(8px,8px)}
-.me .frame{aspect-ratio:4/5;border-radius:14px;overflow:hidden;background:var(--card)}
 .me img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 12%;transition:transform .8s cubic-bezier(.22,1,.36,1)}.me:hover img{transform:scale(1.04)}
 @media(max-width:760px){.ab2{grid-template-columns:1fr;gap:40px}.me{max-width:340px}}
 
@@ -261,3 +258,10 @@ background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000
 
 .card2 li a{font-size:15.5px;word-break:normal;overflow-wrap:anywhere}
 .card2 li{flex-wrap:nowrap;align-items:flex-start}.card2 li svg{margin-top:3px}.card2 li a,.card2 li span{min-width:0;font-size:15.5px;line-height:1.5}
+
+/* ---- about photo: outline on the picture only, caption underneath ---- */
+.me .frame{position:relative;isolation:isolate}
+.me .frame:before{content:"";position:absolute;inset:0;transform:translate(14px,14px);border:1.5px solid var(--crimson);border-radius:14px;z-index:-1;transition:transform .5s cubic-bezier(.22,1,.36,1)}
+.me:hover .frame:before{transform:translate(8px,8px)}
+.me .pic{aspect-ratio:4/5;border-radius:14px;overflow:hidden;background:var(--card)}
+.me figcaption{margin:32px 0 0;padding:0}

@@ -21,7 +21,7 @@ const certs = [
     </div>
     <div class="ab2">
       <figure class="me" v-reveal>
-        <div class="frame"><img :src="photo" alt="Matthew smiling" loading="lazy" /></div>
+        <div class="frame"><div class="pic"><img :src="photo" alt="Matthew smiling" loading="lazy" /></div></div>
         <figcaption>Based in {{ profile.location }}</figcaption>
       </figure>
 
@@ -46,8 +46,8 @@ const certs = [
           </ol>
         </div>
 
-        <div class="cvb">
-          <a class="btn s" :href="profile.cv" download><Download :size="15" /> Download CV</a>
+        <div v-if="profile.cv" class="cvb">
+          <a class="btn s" :href="profile.cv" :download="profile.cvFileName"><Download :size="15" /> Download CV</a>
           <a class="btn" :href="profile.cv" target="_blank" rel="noopener"><ExternalLink :size="15" /> View CV</a>
         </div>
       </div>
